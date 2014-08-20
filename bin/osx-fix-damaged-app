@@ -1,0 +1,2 @@
+#!/bin/bash
+xattr -rc "$1"
