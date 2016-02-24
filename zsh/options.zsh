@@ -1,0 +1,1 @@
+setopt rm_star_silent
