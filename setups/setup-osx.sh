@@ -30,6 +30,9 @@ defaults write com.apple.LaunchServices LSQuarantine -bool false
 defaults write NSGlobalDomain KeyRepeat -float 1.0
 defaults write NSGlobalDomain InitialKeyRepeat -int 20
 
+# Enable keyboard repeat in UI's
+defaults write -g ApplePressAndHoldEnabled -bool false
+
 # Enable text selection in QuickLook
 defaults write com.apple.finder QLEnableTextSelection -bool true
 
@@ -48,6 +51,9 @@ defaults write com.apple.frameworks.diskimages skip-verify-remote -bool true
 defaults write com.apple.frameworks.diskimages auto-open-ro-root -bool true
 defaults write com.apple.frameworks.diskimages auto-open-rw-root -bool true
 defaults write com.apple.finder OpenWindowForNewRemovableDisk -bool true
+
+# Disable Autocorrect
+defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
 
 ###############################################################################
 # Transmission.app                                                            #
