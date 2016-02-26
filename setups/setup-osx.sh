@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Make bin home directory
+mkdir -p "$HOME/.local/bin"
+
 # Enable tap-to-click
 defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
 defaults -currentHost write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
@@ -54,6 +57,14 @@ defaults write com.apple.finder OpenWindowForNewRemovableDisk -bool true
 
 # Disable Autocorrect
 defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
+
+###############################################################################
+# Screen                                                                      #
+###############################################################################
+
+# Require password immediately after sleep or screen saver begins
+defaults write com.apple.screensaver askForPassword -int 0
+defaults write com.apple.screensaver askForPasswordDelay -int 0
 
 ###############################################################################
 # Transmission.app                                                            #
