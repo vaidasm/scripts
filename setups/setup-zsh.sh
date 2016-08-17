@@ -6,4 +6,4 @@ fi
 
 cp -n ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc
 
-sed 's/^\# ZSH_CUSTOM=.*$/ZSH_CUSTOM=\~\/\.dotfiles\/zsh/g' ~/.zshrc
+sed 's/^\# ZSH_CUSTOM=.*$/ZSH_CUSTOM=\~\/\.dotfiles\/zsh/g' -i ~/.zshrc
