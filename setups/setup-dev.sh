@@ -1,8 +1,8 @@
+#!/bin/bash
+
 # Add dockerfiles
 if [ -d "$HOME/.datadog-dockerfiles" ]; then
-  git -C "$HOME/.datadog-dockerfiles" pull
+  git -C "$HOME/.datadog-dockerfiles" pull > /dev/null
 else
-  git clone https://github.com/DATA-DOG/dockerfiles.git ~/.datadog-dockerfiles
+  git clone git@github.com:DATA-DOG/dockerfiles.git "$HOME/.datadog-dockerfiles"
 fi
-
-
