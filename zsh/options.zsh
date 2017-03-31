@@ -1,6 +1,8 @@
 # ZSH options
 setopt rm_star_silent
 
+ZSH_THEME=robbyrussell
+
 # ENV
 export EDITOR="vim"
 export GOPATH="$HOME/Go"

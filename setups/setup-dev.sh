@@ -6,3 +6,8 @@ if [ -d "$HOME/.datadog-dockerfiles" ]; then
 else
   git clone git@github.com:DATA-DOG/dockerfiles.git "$HOME/.datadog-dockerfiles"
 fi
+
+
+rm -rf "$HOME/.vimrc";
+ln -s "$HOME/.dotfiles/templates/vimrc" "$HOME/.vimrc";
+
