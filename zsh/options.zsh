@@ -8,7 +8,7 @@ export EDITOR="vim"
 export GOPATH="$HOME/Go"
 
 # PATH
-export PATH="$HOME/.local/bin:$PATH"
+export PATH="$HOME/.local/bin:$HOME/.dotfiles/bin:$PATH"
 
 if [ -d "$HOME/.datadog-dockerfiles/" ]; then
   export PATH="$PATH:$HOME/.datadog-dockerfiles/bin"

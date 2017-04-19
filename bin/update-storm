@@ -1,0 +1,44 @@
+#/bin/bash
+
+if [ ! -f "$1" ]; then
+	echo "No such file"
+	exit 1;
+fi
+
+HOME_APPS="$HOME/Apps/PhpStorm"
+CURRENT=`tar t -f $1 | grep -E '^PhpStorm-[0-9\.]+' -m 1 -oh`
+
+if [ ! -d "$HOME_APPS" ]; then
+    mkdir -p "$HOME_APPS"
+fi
+
+echo "Current build is $CURRENT"
+
+tar xf "$1" -C "$HOME_APPS"
+
+rm -f "$HOME_APPS/current" 
+ln -s "$HOME_APPS/$CURRENT" "$HOME_APPS/current"
+
+echo "[Desktop Entry]
+Version=1.0
+Type=Application
+Name=PhpStorm
+Icon=/home/vaidas/Apps/PhpStorm/current/bin/phpstorm.png
+Exec=\"$HOME_APPS/current/bin/phpstorm.sh\" %f
+Comment=The Drive to Develop
+Categories=Development;IDE;
+Terminal=false
+StartupWMClass=jetbrains-phpstorm
+" > $HOME/.local/share/applications/jetbrains-phpstorm.desktop
+
+
+echo "Success"
+
+while true; do
+    read -p "Remove old build ($1)?" yn
+    case $yn in
+        [Yy]* ) rm -f $1; break;;
+        [Nn]* ) exit;;
+        * ) echo "Please answer yes or no.";;
+    esac
+done
