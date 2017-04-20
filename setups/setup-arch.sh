@@ -13,10 +13,10 @@ echo "blacklist pcspkr" > /etc/modprobe.d/nobeep.conf
 rmmod pcspkr 2> /dev/null
 
 # Install defaults
-pacman -Sy --needed gcc pkg-config make fakeroot binutils openssh sudo vim terminator git firefox zsh docker docker-compose networkmanager
+pacman -Sy --needed patch gcc pkg-config make fakeroot binutils openssh sudo vim terminator git firefox zsh docker docker-compose networkmanager
 
 # Install yaourt
-sudo -u $USER mkdir -p $USER_HOME/.local/src/
+sudo -u $USER mkdir -p $USER_HOME/.local/src/ 
 
 pacman -Q package-query 2> /dev/null
 if [ "$?" != "0" ]; then
@@ -39,14 +39,11 @@ systemctl enable NetworkManager
 sudo -u $USER git clone https://github.com/vaidasm/scripts.git $USER_HOME/.dotfiles
 
 # Install google chrome
-pacman -Q google-chrome >> /dev/null
-if [ "$?" != "0" ]; then
-  sudo -u $USER yaourt -S google-chrome
-fi
+sudo -u $USER yaourt -S --needed google-chrome slack-desktop
 
 # Add user to groups
-groupadd docker
-sudo gpasswd -a ${USER} docker
+groupadd docker 2> /dev/null
+sudo gpasswd -a ${USER} docker 2> /dev/null
 
 # Setup zsh
 sudo -u $USER $USER_HOME/.dotfiles/setups/setup-zsh.sh

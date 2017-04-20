@@ -17,9 +17,16 @@ rm -rf "$HOME/.vimrc";
 ln -s "$HOME/.dotfiles/templates/vimrc" "$HOME/.vimrc";
 
 # Setup PhpStorm
-if [ -f "$HOME/Apps/PhpStorm/current" ]; then
+if [ ! -d "$HOME/Apps/PhpStorm/current" ]; then
+  echo "Downloading PhpStorm"
   curl -o $HOME/Downloads/phpstorm.tar.gz https://download-cf.jetbrains.com/webide/PhpStorm-2017.1.2.tar.gz
   update-storm $HOME/Downloads/phpstorm.tar.gz
 fi
 
+# Setup DataGrip
+if [ ! -d "$HOME/Apps/DataGrip/current" ]; then
+  echo "Downloading DataGrip"
+  curl -o $HOME/Downloads/datagrip.tar.gz https://download-cf.jetbrains.com/datagrip/datagrip-2017.1.1.tar.gz
+  update-datagrip $HOME/Downloads/datagrip.tar.gz
+fi
 

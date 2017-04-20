@@ -1,12 +1,12 @@
 #/bin/bash
 
 if [ ! -f "$1" ]; then
-	echo "No such file"
-	exit 1;
+        echo "No such file"
+        exit 1;
 fi
 
-HOME_APPS="$HOME/Apps/PhpStorm"
-CURRENT=`tar t -f $1 | grep -E '^PhpStorm-[0-9\.]+' -m 1 -oh`
+HOME_APPS="$HOME/Apps/DataGrip"
+CURRENT=`tar t -f $1 | grep -E '^DataGrip-[0-9\.]+' -m 1 -oh`
 
 if [ ! -d "$HOME_APPS" ]; then
     mkdir -p "$HOME_APPS"
@@ -16,20 +16,18 @@ echo "Current build is $CURRENT"
 
 tar xf "$1" -C "$HOME_APPS"
 
-rm -f "$HOME_APPS/current" 
+rm -f "$HOME_APPS/current"
 ln -s "$HOME_APPS/$CURRENT" "$HOME_APPS/current"
 
 echo "[Desktop Entry]
 Version=1.0
 Type=Application
-Name=PhpStorm
-Icon=$HOME_APPS/current/bin/phpstorm.png
-Exec=\"$HOME_APPS/current/bin/phpstorm.sh\" %f
-Comment=The Drive to Develop
-Categories=Development;IDE;
+Name=DataGrip
+Icon=$HOME_APPS/current/bin/datagrip.png
+Exec=\"$HOME_APPS/current/bin/datagrip.sh\" %f
 Terminal=false
-StartupWMClass=jetbrains-phpstorm
-" > $HOME/.local/share/applications/jetbrains-phpstorm.desktop
+StartupWMClass=jetbrains-datagrip
+" > $HOME/.local/share/applications/jetbrains-datagrip.desktop
 
 
 echo "Success"
@@ -42,3 +40,4 @@ while true; do
         * ) echo "Please answer yes or no.";;
     esac
 done
+
