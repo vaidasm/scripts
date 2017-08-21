@@ -2,6 +2,8 @@
 setopt rm_star_silent
 
 ZSH_THEME=robbyrussell
+HYPHEN_INSENSITIVE="true"
+RM_STAR_SILENT="true"
 
 # ENV
 export EDITOR="vim"
