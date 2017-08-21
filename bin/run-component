@@ -1,0 +1,18 @@
+#/bin/bash
+
+FILE=$1;
+
+if [ -f vendor/bin/$1 ]; then
+  FILE=vendor/bin/$1;
+elif [ -f bin/$1 ]; then
+  FILE=bin/$1;
+else
+  echo "Could not find $1"
+  exit 1;
+fi
+
+if [ -f docker-compose.yml ]; then
+  docker-compose exec php "/var/www/$FILE" $2 $3 $4 $5;
+else
+  php $FILE $2 $3 $4 $5;
+fi
