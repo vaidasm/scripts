@@ -2,6 +2,7 @@
 
 git config --global user.email "vaidas.m@datadog.org"
 git config --global user.name "Vaidas Mikalauskas"
+git config --global pull.rebase true
 git config --global core.excludesfile ~/.gitignore_global
 
 echo ".idea/*" > ~/.gitignore_global
