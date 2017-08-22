@@ -13,7 +13,10 @@ echo "blacklist pcspkr" > /etc/modprobe.d/nobeep.conf
 rmmod pcspkr 2> /dev/null
 
 # Install defaults
-pacman -Sy --needed patch gcc pkg-config make fakeroot binutils openssh sudo vim terminator git firefox zsh docker docker-compose networkmanager
+pacman -Sy --needed patch gcc pkg-config make fakeroot binutils \
+                    openssh sudo vim terminator git firefox zsh \
+                    docker docker-compose networkmanager nodejs npm \
+                    pwgen atom
 
 # Install yaourt
 sudo -u $USER mkdir -p $USER_HOME/.local/src/ 
@@ -39,7 +42,7 @@ systemctl enable NetworkManager
 sudo -u $USER git clone https://github.com/vaidasm/scripts.git $USER_HOME/.dotfiles
 
 # Install google chrome
-sudo -u $USER yaourt -S --needed google-chrome slack-desktop
+sudo -u $USER yaourt -S --needed google-chrome slack-desktop spotify
 
 # Add user to groups
 groupadd docker 2> /dev/null
@@ -54,3 +57,7 @@ echo "vaidas ALL=(ALL) ALL" >> /etc/sudoers
 
 # Enable zsh
 chsh -s /bin/zsh $USER
+
+# Idea config
+echo "fs.inotify.max_user_watches = 524288" > /etc/sysctl.d/max-wathes.conf
+sysctl -p --system

@@ -16,6 +16,14 @@ fi
 rm -rf "$HOME/.vimrc";
 ln -s "$HOME/.dotfiles/templates/vimrc" "$HOME/.vimrc";
 
+# Setup composer
+if [ ! -f "$HOME/.local/bin/composer" ]; then
+  mkdir -p "$HOME/.local/bin"
+  curl -o $HOME/.local/bin/composer.phar https://getcomposer.org/composer.phar
+  chmod +x $HOME/.local/bin/composer.phar
+  ln -s $HOME/.local/bin/composer.phar $HOME/.local/bin/composer
+fi
+
 # Setup PhpStorm
 if [ ! -d "$HOME/Apps/PhpStorm/current" ]; then
   echo "Downloading PhpStorm"
