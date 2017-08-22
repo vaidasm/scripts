@@ -8,7 +8,7 @@ echo ".idea/*" > ~/.gitignore_global
 
 # Add dockerfiles
 if [ -d "$HOME/.datadog-dockerfiles" ]; then
-  git -C "$HOME/.datadog-dockerfiles" pull > /dev/null
+  git -C "$HOME/.datadog-dockerfiles" pull 2> /dev/null
 else
   git clone git@github.com:DATA-DOG/dockerfiles.git "$HOME/.datadog-dockerfiles"
 fi
@@ -25,16 +25,19 @@ if [ ! -f "$HOME/.local/bin/composer" ]; then
 fi
 
 # Setup PhpStorm
-if [ ! -d "$HOME/Apps/PhpStorm/current" ]; then
+read -p "Do you want PHPStorm? " -n 1 -r
+if [[  $REPLY =~ ^[Yy]$ && ! -d "$HOME/Apps/PhpStorm/current" ]]; then
   echo "Downloading PhpStorm"
   curl -o $HOME/Downloads/phpstorm.tar.gz https://download-cf.jetbrains.com/webide/PhpStorm-2017.1.2.tar.gz
   update-storm $HOME/Downloads/phpstorm.tar.gz
 fi
 
 # Setup DataGrip
-if [ ! -d "$HOME/Apps/DataGrip/current" ]; then
+read -p "Do you want DataGrip? " -n 1 -r
+if [[ $REPLY =~ ^[Yy]$ && ! -d "$HOME/Apps/DataGrip/current" ]]; then
   echo "Downloading DataGrip"
   curl -o $HOME/Downloads/datagrip.tar.gz https://download-cf.jetbrains.com/datagrip/datagrip-2017.1.1.tar.gz
   update-datagrip $HOME/Downloads/datagrip.tar.gz
 fi
 
+GOPATH=~/Sites/Go
