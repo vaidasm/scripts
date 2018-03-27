@@ -9,6 +9,7 @@ RM_STAR_SILENT="true"
 export EDITOR="vim"
 export GOPATH="$HOME/Go"
 export NODE_ENV="development"
+export VAULT_ADDR="https://vault.ibuildnew.com"
 
 # PATH
 export PATH="$HOME/.local/bin:$HOME/.dotfiles/bin:$PATH"

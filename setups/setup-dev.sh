@@ -7,6 +7,8 @@ git config --global core.excludesfile ~/.gitignore_global
 
 echo ".idea/*" > ~/.gitignore_global
 
+curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.8/install.sh | bash
+
 # Add dockerfiles
 if [ -d "$HOME/.datadog-dockerfiles" ]; then
   git -C "$HOME/.datadog-dockerfiles" pull 2> /dev/null

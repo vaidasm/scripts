@@ -6,6 +6,7 @@ if [ ! -f "$1" ]; then
 fi
 
 HOME_APPS="$HOME/Apps/PhpStorm"
+mkdir -p $HOME_APPS
 CURRENT=`tar t -f $1 | grep -E '^PhpStorm-[0-9\.]+' -m 1 -oh`
 
 if [ ! -d "$HOME_APPS" ]; then

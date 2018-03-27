@@ -1,0 +1,21 @@
+#!/bin/bash
+
+if [ $1 == 'staging' ]; then
+    IP=188.166.232.102
+elif [ $1 == 'ci' ]; then
+    IP=128.199.208.246
+elif [ $1 == 'ib1' ]; then
+    IP=54.79.31.157
+elif [ $1 == 'ib2' ]; then
+    IP=54.79.56.211
+elif [ $1 == 'slave' ]; then
+    IP=128.199.93.58
+elif [ $1 == 'events' ]; then
+    IP=139.59.115.162
+else
+    echo "Address not provided"
+    exit
+fi
+
+VAULT_ADDR="https://vault.ibuildnew.com" vault ssh -mode=otp -role otp_key_role -strict-host-key-checking=no ibuild@$IP
+
