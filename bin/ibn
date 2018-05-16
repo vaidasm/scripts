@@ -10,6 +10,8 @@ elif [ $1 == 'ib2' ]; then
     IP=54.79.56.211
 elif [ $1 == 'slave' ]; then
     IP=128.199.93.58
+elif [ $1 == 'slave2' ]; then
+    IP=159.65.139.127
 elif [ $1 == 'events' ]; then
     IP=139.59.115.162
 else

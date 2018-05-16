@@ -8,6 +8,10 @@ if [ `whoami` != "root" ]; then
     exit 255;
 fi
 
+echo "NOENTER=0" >> /etc/yaourtrc
+echo "EDITFILES=0" >> /etc/yaourtrc
+echo "NOCONFIRM=0" >> /etc/yaourtrc
+
 # Disable pc speeker
 echo "blacklist pcspkr" > /etc/modprobe.d/nobeep.conf
 rmmod pcspkr 2> /dev/null
