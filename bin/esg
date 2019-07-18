@@ -1,0 +1,6 @@
+LIST=`git diff-index --name-only HEAD | grep --extended-regexp .jsx? | grep -v json`; 
+
+echo $LIST
+if [ "$LIST" ]; then 
+  ./node_modules/.bin/eslint --ext jsx --ext js $LIST; 
+fi
