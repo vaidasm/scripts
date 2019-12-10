@@ -12,6 +12,12 @@ echo "NOENTER=0" >> /etc/yaourtrc
 echo "EDITFILES=0" >> /etc/yaourtrc
 echo "NOCONFIRM=0" >> /etc/yaourtrc
 
+if grep -qe "#Color" /etc/pacman.conf; then
+  echo "colors enabled"
+else
+#  echo Color >> /etc/pacman.conf
+fi
+
 # Disable pc speeker
 echo "blacklist pcspkr" > /etc/modprobe.d/nobeep.conf
 rmmod pcspkr 2> /dev/null
@@ -33,20 +39,10 @@ fi
 
 # Install yaourt
 sudo -u $USER mkdir -p $USER_HOME/.local/src/ 
+git clone https://aur.archlinux.org/yay.git $USER_HOME/.local/src/yay
+cd $USER_HOME/.local/src/yay
+makepkg -si
 
-pacman -Q package-query 2> /dev/null
-if [ "$?" != "0" ]; then
-  sudo -u $USER git clone https://aur.archlinux.org/package-query.git $USER_HOME/.local/src/package-query
-  cd $USER_HOME/.local/src/package-query
-  sudo -u $USER makepkg -si
-fi
-
-pacman -Q yaourt >> /dev/null
-if [ "$?" != "0" ]; then
-  sudo -u $USER git clone https://aur.archlinux.org/yaourt.git $USER_HOME/.local/src/yaourt
-  cd $USER_HOME/.local/src/yaourt
-  sudo -u $USER makepkg -si
-fi
 
 # Enable servises
 systemctl enable NetworkManager

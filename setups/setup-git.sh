@@ -7,8 +7,8 @@ git config --global user.email "vaidas.m@datadog.org"
 # Config
 git config --global push.default tracking
 git config --global pull.rebase true
-git config rebase.autosquash true
-git config branch.autosetupmerge always
+git config --global rebase.autosquash true
+git config --global branch.autosetupmerge always
 
 # Aliases
 git config --global --add alias.permission-reset '!git diff -p -R | grep -E \"^(diff|(old|new) mode)\" | git apply'
