@@ -2,6 +2,7 @@
 set -e
 
 VERSION=$1
+BRANCH=`git branch 2>/dev/null | grep '^*' | colrm 1 2`
 
 function cleanup {
   rm -rf /tmp/version
@@ -23,6 +24,17 @@ function askFor {
     exit 1
   fi
 }
+
+if [ ! -d .chglog ]
+then
+  echo "no such directory .chglog"
+  exit 1
+fi
+
+if [ "$BRANCH" != "dev" -a "$BRANCH" != "develop" -a "$BRANCH" != "development" -a "$BRANCH" != "master" ]
+then
+  QUESTION="You are not on master/dev branch ($BRANCH), do you want to continue?" askFor
+fi
 
 git-chglog --next-tag=$VERSION $VERSION > /tmp/version
 cat /tmp/version | less
