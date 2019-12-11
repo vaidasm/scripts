@@ -5,7 +5,6 @@ VERSION=$1
 
 function cleanup {
   rm -rf /tmp/version
-  exit 1
 }
 
 function push {
@@ -21,6 +20,7 @@ function askFor {
     echo ""
   else
     cleanup
+    exit 1
   fi
 }
 
@@ -31,5 +31,5 @@ git-chglog --next-tag=$VERSION -o CHANGELOG.md
 git add CHANGELOG.md
 git commit -m "Update changelog for $VERSION"
 git tag -F /tmp/version -a $VERSION
-cleanup
 push
+cleanup
