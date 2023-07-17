@@ -2,7 +2,7 @@
 
 # Personal details
 git config --global user.name "Vaidas Mikalauskas"
-git config --global user.email "vaidas.m@datadog.org"
+git config --global user.email "vaidas@dutrys.com"
 
 # Config
 git config --global push.default tracking
