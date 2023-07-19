@@ -78,3 +78,7 @@ defaults write org.m0k.transmission DeleteOriginalTorrent -bool true
 defaults write org.m0k.transmission WarningDonate -bool false
 # Hide the legal disclaimer
 defaults write org.m0k.transmission WarningLegal -bool false
+
+# Install Homebew
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
