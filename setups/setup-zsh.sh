@@ -12,3 +12,6 @@ cd /tmp && git clone https://github.com/powerline/fonts.git --depth=1
 /tmp/fonts/install.sh
 rm -rf /tmp/fonts
 
+rm -rf ~/.zshrc
+ln -s ~/.dotfiles/zsh/zshrc ~/.zshrc
+
